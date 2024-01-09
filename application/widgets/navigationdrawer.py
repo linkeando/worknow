@@ -26,7 +26,7 @@ class NavigationDrawer:
             self.page.appbar.title = ft.Text('Chat', overflow=ft.TextOverflow.ELLIPSIS)
             self.page.session.set(Constants.INDEX_CHAT_RAIL, 0)
         elif selected_tab_route == TabRoutes.DOWNLOAD.value:
-            self.page.appbar.title = ft.Text('Descargas', overflow=ft.TextOverflow.ELLIPSIS)
+            self.page.appbar.title = ft.Text('Downloader', overflow=ft.TextOverflow.ELLIPSIS)
             self.page.session.set(Constants.INDEX_DOWNLOAD_RAIL, 0)
         elif selected_tab_route == TabRoutes.SETTINGS.value:
             self.page.appbar.title = ft.Text('Settings', overflow=ft.TextOverflow.ELLIPSIS)

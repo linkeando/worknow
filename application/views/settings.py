@@ -3,6 +3,7 @@ import flet as ft
 from application.database.database_manager import DatabaseManager
 from application.database.preferences_db import PreferencesDB
 from application.utils.constants import Constants
+from application.utils.enums import TabDrawer
 from application.utils.page import UtilPage
 
 
@@ -12,7 +13,8 @@ class Settings:
         self.session_manager = DatabaseManager()
         self.preferences = PreferencesDB(self.session_manager)
 
-    def settings_tile(self, title, icon=None, subtitle=None, on_click=None):
+    @staticmethod
+    def settings_tile(title, icon=None, subtitle=None, on_click=None):
         return ft.Container(
             content=ft.ListTile(
                 leading=icon,
@@ -82,5 +84,5 @@ class Settings:
             self.settings_tile(title='Subir Configuracion', icon=ft.Icon(ft.icons.UPLOAD),
                                on_click=lambda e: self.upload_database()),
             self.settings_tile(title='Ruta De Guardado', subtitle=path_to_download, icon=ft.Icon(ft.icons.FOLDER),
-                               on_click=lambda e: self.define_path_to_save()),
+                               on_click=lambda e: self.define_path_to_save())
         ], expand=True)

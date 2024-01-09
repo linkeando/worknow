@@ -10,18 +10,8 @@ class DestinationProvider:
     def get_default_destinations():
         return [
             ft.NavigationRailDestination(
-                icon=ft.icons.FAVORITE_BORDER, selected_icon=ft.icons.FAVORITE, label="First"
-            ),
-            ft.NavigationRailDestination(
-                icon=ft.icons.BOOKMARK_BORDER,
-                selected_icon=ft.icons.BOOKMARK,
-                label="Second",
-            ),
-            ft.NavigationRailDestination(
-                icon=ft.icons.SETTINGS_OUTLINED,
-                selected_icon_content=ft.Icon(ft.icons.SETTINGS),
-                label_content=ft.Text("Settings"),
-            ),
+                icon=ft.icons.FAVORITE_BORDER, selected_icon=ft.icons.TRY_SMS_STAR, label="Test"
+            )
         ]
 
     @staticmethod
@@ -59,7 +49,7 @@ class DestinationProvider:
         def update():
             index = page.session.get(Constants.INDEX_CHAT_RAIL)
             if index == 0:
-                page.appbar.title = ft.Text('Home')
+                page.appbar.title = ft.Text('Chat')
                 page.go(TabRoutes.CHAT.value)
             elif index == 1:
                 page.appbar.title = ft.Text('Preferences')
