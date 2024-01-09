@@ -98,7 +98,6 @@ class Chat:
         response = g4f.ChatCompletion.create(
             model="gpt-3.5-turbo",
             messages=message_list,
-            provider=g4f.Provider.GptGo,
             stream=True
         )
 
@@ -129,7 +128,7 @@ class Chat:
         self.page.update()
 
     def create_textfield(self):
-        return ft.TextField(border_radius=20, expand=True, multiline=True)
+        return ft.TextField(border_radius=20, expand=True, multiline=True, max_lines=10)
 
     @staticmethod
     def create_btn_action(icon, tooltip, callback, *args, **kwargs):
