@@ -6,6 +6,8 @@ import flet as ft
 class NavigationDrawer:
     ICON_HOME = ft.icons.CHAT_BUBBLE
     ICON_DOWNLOAD = ft.icons.DOWNLOAD
+    ICON_GENERATOR = ft.icons.GENERATING_TOKENS
+    ICON_COUNTER = ft.icons.TEXT_FORMAT
     ICON_SETTINGS = ft.icons.SETTINGS
 
     def __init__(self, page: ft.Page):
@@ -15,6 +17,8 @@ class NavigationDrawer:
         destinations = [
             ft.NavigationDrawerDestination(icon=self.ICON_HOME, label=TabLabels.CHAT.value),
             ft.NavigationDrawerDestination(icon=self.ICON_DOWNLOAD, label=TabLabels.DOWNLOAD.value),
+            ft.NavigationDrawerDestination(icon=self.ICON_GENERATOR, label=TabLabels.GENERATOR.value),
+            ft.NavigationDrawerDestination(icon=self.ICON_COUNTER, label=TabLabels.COUNTER.value),
             ft.NavigationDrawerDestination(icon=self.ICON_SETTINGS, label=TabLabels.SETTINGS.value)
         ]
         drawer = ft.NavigationDrawer(on_change=lambda event: self._change_tab_drawer(event),
@@ -28,6 +32,10 @@ class NavigationDrawer:
         elif selected_tab_route == TabRoutes.DOWNLOAD.value:
             self.page.appbar.title = ft.Text('Downloader', overflow=ft.TextOverflow.ELLIPSIS)
             self.page.session.set(Constants.INDEX_DOWNLOAD_RAIL, 0)
+        elif selected_tab_route == TabRoutes.GENERATOR.value:
+            self.page.appbar.title = ft.Text('Generator', overflow=ft.TextOverflow.ELLIPSIS)
+        elif selected_tab_route == TabRoutes.COUNTER.value:
+            self.page.appbar.title = ft.Text('Counter', overflow=ft.TextOverflow.ELLIPSIS)
         elif selected_tab_route == TabRoutes.SETTINGS.value:
             self.page.appbar.title = ft.Text('Settings', overflow=ft.TextOverflow.ELLIPSIS)
         self.page.go(selected_tab_route)
