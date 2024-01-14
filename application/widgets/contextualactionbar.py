@@ -21,9 +21,16 @@ class ContextualActionBar:
         self.enable_single_vert = enable_single_vert
 
     def _select_all(self):
+        print(self.on_element)
         self.selected_controls = list(self.controls.keys())
         self._update_bar()
         self._update_color_all_elements()
+
+    def _copy_text(self, text):
+        self.page.set_clipboard(text)
+        self.page.snack_bar = ft.SnackBar(ft.Text("Mensaje Copiado Al Portapapeles"))
+        self.page.snack_bar.open = True
+        self.page.update()
 
     def _default_one_element(self, item):
         menu_items = [
@@ -32,7 +39,7 @@ class ContextualActionBar:
 
         if getattr(item, 'value', None):
             menu_items.append(ft.PopupMenuItem(icon=ft.icons.COPY, text="Copiar",
-                                               on_click=lambda e: self.page.set_clipboard(item.value)))
+                                               on_click=lambda e: self._copy_text(item.value)))
 
         return [ft.PopupMenuButton(items=menu_items)]
 

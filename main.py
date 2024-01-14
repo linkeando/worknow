@@ -13,7 +13,7 @@ def main(page: ft.Page):
     router = Router(page)
     page.on_route_change = router.route_change
     page.add(router.body)
-    page.go(TabRoutes.CHAT.value)
+    page.go(TabRoutes.SETTINGS.value)
 
 
 ft.app(target=main)

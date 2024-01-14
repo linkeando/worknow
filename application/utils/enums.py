@@ -12,6 +12,9 @@ class TabRoutes(Enum):
     CHAT_SETTINGS = '/chat_settings'
     CHAT_HISTORY = '/chat_history'
     DOWNLOAD = '/descargas'
+    DOWNLOAD_SETTINGS = '/descargas_settings'
+    DOWNLOAD_FORMATS = '/descargas_formats'
+    DOWNLOAD_HISTORY = '/descargas_history'
     SETTINGS = '/settings'
 
 

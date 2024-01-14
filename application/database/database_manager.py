@@ -1,7 +1,7 @@
+import shutil
 import sys
 import os
 
-import requests
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy.exc import SQLAlchemyError
