@@ -3,6 +3,7 @@ import flet as ft
 from application.database.database_manager import DatabaseManager
 from application.database.preferences_db import PreferencesDB
 from application.services.counter import CounterService
+from application.utils.constants import Constants
 
 
 class Counter:
@@ -37,8 +38,9 @@ class Counter:
         )
 
     def create_text_to_evaluate(self):
+        value_preference = self.preferences.get_preference(Constants.COUNTER_STATE)
         return ft.Container(margin=ft.margin.all(10), expand=True,
-                            content=ft.TextField(multiline=True, min_lines=1280,
+                            content=ft.TextField(multiline=True, min_lines=1280, value=value_preference,
                                                  on_change=lambda e: self.counter_service.on_text_change_main(e)))
 
     @staticmethod

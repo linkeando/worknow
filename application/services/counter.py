@@ -2,12 +2,19 @@ from collections import Counter
 
 import flet as ft
 
+from application.database.database_manager import DatabaseManager
+from application.database.preferences_db import PreferencesDB
+from application.utils.constants import Constants
+
 
 class CounterService:
     def __init__(self, page: ft.Page):
         self.page = page
+        self.session_manager = DatabaseManager()
+        self.preferences = PreferencesDB(self.session_manager)
 
     def update_all(self, text_to_count: str):
+        self.preferences.set_preference(Constants.COUNTER_STATE, text_to_count)
         self.update_word_count(text_to_count)
         self.update_character_count(text_to_count)
         self.update_unique_words_count(text_to_count)
@@ -43,6 +50,7 @@ class CounterService:
         self.update_card_content(1, '0')
         self.update_card_content(2, '0')
         self.update_card_content(3, '0')
+        self.preferences.delete_preference(Constants.COUNTER_STATE)
         self.page.update()
 
     def copy(self, input_text: ft.Container):
