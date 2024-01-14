@@ -27,11 +27,12 @@ class Counter:
         return ft.Container(
             margin=ft.margin.all(10),
             content=ft.Row([
-                ft.ElevatedButton('Leer Archivo TXT', expand=True, height=58,
+                ft.ElevatedButton(icon=ft.icons.MARK_CHAT_READ_OUTLINED, text='Leer TXT', expand=True,
+                                  height=58,
                                   on_click=lambda e: self.counter_service.read(self.evaluate_text)),
-                ft.ElevatedButton('Limpiar Contenido', expand=True, height=58,
+                ft.ElevatedButton(icon=ft.icons.CLEAR_ALL, text='Limpiar', expand=True, height=58,
                                   on_click=lambda e: self.counter_service.clean(self.evaluate_text)),
-                ft.ElevatedButton('Copiar Contenido', expand=True, height=58,
+                ft.ElevatedButton(icon=ft.icons.COPY, text='Copiar', expand=True, height=58,
                                   on_click=lambda e: self.counter_service.copy(self.evaluate_text)),
                 self.text_to_search,
             ])
