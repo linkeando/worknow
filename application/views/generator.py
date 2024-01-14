@@ -42,8 +42,9 @@ class Generator:
                             input_filter=ft.NumbersOnlyInputFilter())
 
     def output_generator(self):
+        value_output = self.generator_service.preferences.get_preference(Constants.CONTAINER_GENERATOR)
         return ft.Container(margin=ft.margin.all(10), expand=True,
-                            content=ft.TextField(multiline=True, min_lines=1280,
+                            content=ft.TextField(multiline=True, min_lines=1280, value=value_output
                                                  ))
 
     def create_option_generator(self):

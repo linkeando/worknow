@@ -68,7 +68,8 @@ class GeneratorService:
 
         cadena_resultante = '\n\n'.join(generated_values)
         container_to_update.content.value = cadena_resultante
-        self.preferences.set_preference(Constants.LONGITUD_GENERATOR, longitud)
+        self.preferences.set_preference(Constants.LONGITUD_GENERATOR, str(longitud))
         self.preferences.set_preference(Constants.TERMINACION_GENERATOR, terminacion)
-        self.preferences.set_preference(Constants.RESULTADOS_GENERATOR, resultados)
+        self.preferences.set_preference(Constants.RESULTADOS_GENERATOR, str(resultados))
+        self.preferences.set_preference(Constants.CONTAINER_GENERATOR, str(resultados))
         self.page.update()
