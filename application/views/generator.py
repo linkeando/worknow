@@ -31,12 +31,12 @@ class Generator:
                             input_filter=ft.NumbersOnlyInputFilter())
 
     def end_mail(self):
-        value_mail = self.generator_service.preferences.get_preference(Constants.LONGITUD_GENERATOR)
+        value_mail = self.generator_service.preferences.get_preference(Constants.TERMINACION_GENERATOR)
         return ft.TextField(expand=True, label='Terminacion (correo)', hint_text='Ingrese Terminacion',
                             value=value_mail)
 
     def quantity_output(self):
-        value_quantity = self.generator_service.preferences.get_preference(Constants.LONGITUD_GENERATOR)
+        value_quantity = self.generator_service.preferences.get_preference(Constants.RESULTADOS_GENERATOR)
         return ft.TextField(expand=True, label='Resultados', hint_text='Ingrese Total De Resultados',
                             value=value_quantity,
                             input_filter=ft.NumbersOnlyInputFilter())
