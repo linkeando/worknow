@@ -28,13 +28,20 @@ class DownloaderVideo:
 
     @staticmethod
     def format_filesize(filesize):
-        if filesize is None:
+        if filesize is None or filesize == '':
             return 'N/A'
+
+        try:
+            filesize = float(filesize)
+        except ValueError:
+            return 'Invalid Filesize'
+
         units = ['B', 'KB', 'MB', 'GB', 'TB']
         i = 0
         while filesize >= 1024 and i < len(units) - 1:
             filesize /= 1024.0
             i += 1
+
         return "{:.2f}{}".format(filesize, units[i])
 
     def download_option(self, video: Dict, output: str, url_original: str, type_download=''):

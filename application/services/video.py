@@ -53,7 +53,9 @@ class Video:
                                 run_spacing=15)
 
         with ThreadPoolExecutor() as executor:
-            videos_update = list(executor.map(self.action_bar.gesture_control,[DownloadUtil(self.page).create_card_video(video) for video in new_videos]))
+            videos_update = list(executor.map(self.action_bar.gesture_control,
+                                              [DownloadUtil(self.page).create_card_video(video) for video in
+                                               new_videos]))
 
         grid_view.controls = videos_update
 
@@ -87,7 +89,8 @@ class Video:
 
         for video in data_video.get('formats', []):
             format_id, acodec, vcodec, note, filesize, ext = (video.get('format_id', ''), video.get('acodec', ''),
-                                                              video.get('vcodec', ''), video.get('format_note', ''),
+                                                              video.get('vcodec', ''),
+                                                              video.get('format_note', video.get('resolution')),
                                                               video.get('filesize', ''), video.get('ext', '')
                                                               )
 
@@ -96,11 +99,9 @@ class Video:
 
             type_value = self._determine_type(acodec, vcodec)
 
-            if self._should_add_format(type_value, note, format_note_sets):
-                info_dict = self._get_info_dict_formats(format_id, note, filesize, ext, video.get('url'), type_value)
-                if not info_dict.get('url').endswith('.m3u8'):
-                    extracted_info.append(info_dict)
-                    format_note_sets.setdefault(note, set()).add(type_value)
+            info_dict = self._get_info_dict_formats(format_id, note, filesize, ext, video.get('url'), type_value)
+            extracted_info.append(info_dict)
+            format_note_sets.setdefault(note, set()).add(type_value)
 
         return extracted_info
 
