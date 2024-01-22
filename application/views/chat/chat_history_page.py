@@ -1,4 +1,7 @@
 import os
+import platform
+import subprocess
+
 import flet as ft
 
 from application.database.database_manager import DatabaseManager
@@ -16,7 +19,14 @@ class ChatHistory:
 
     def on_tap_callback(self, file_path):
         try:
-            os.startfile(file_path)
+            if platform.system() == "Windows":
+                os.startfile(file_path)
+            elif platform.system() == "Linux":
+                subprocess.run(["xdg-open", file_path])
+            elif platform.system() == "Darwin":  # macOS
+                subprocess.run(["open", file_path])
+            else:
+                print("Sistema operativo no compatible. No se pudo abrir la carpeta.")
         except FileNotFoundError:
             dialog_modal = UtilPage(self.page).create_modal_simple(
                 f"El Archivo \n\n{file_path}\n\n Se Traslado Y No Se Pudo Abrir")
