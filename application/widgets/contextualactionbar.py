@@ -131,7 +131,7 @@ class ContextualActionBar:
         self.page.appbar = self.original_bar
         self.page.update()
 
-    def gesture_control(self, control: T, container_bgcolor: Optional[ft.colors] = None,
+    def gesture_control(self, control: T, container_bgcolor = None,
                         margin: Optional[ft.Margin] = None):
         container = self._content_control(control, container_bgcolor, margin)
         self.controls[control] = {'container': container, 'bgcolor': container_bgcolor, 'control': control}

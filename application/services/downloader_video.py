@@ -45,7 +45,7 @@ class DownloaderVideo:
         return "{:.2f}{}".format(filesize, units[i])
 
     def download_option(self, video: Dict, output: str, url_original: str, type_download=''):
-        output = f'{output}.{video.get('ext')}'
+        output = f'{output}.{video.get("ext")}'
         if len(type_download) > 0:
             self.save_path_download_video_history(type_download, output)
         ydl_opts = {
@@ -100,7 +100,7 @@ class DownloaderVideo:
 
     def download_audio(self, video: Dict):
         audios = self.determinate_format(video, 'audio')
-        output = os.path.join(self.path_download_videos, f'{video.get('title')}')
+        output = os.path.join(self.path_download_videos, f'{video.get("title")}')
         self.update_download_modal('Audio', audios, self.download_option, output, video.get('original_url'), 'audio')
 
     def download_only_video(self, video: Dict):
@@ -109,11 +109,12 @@ class DownloaderVideo:
         self.update_download_modal('Video Sin Audio', only_video, self.download_option, output,
                                    video.get('original_url'), 'solo_video')
 
-    def create_details_view(self, video: dict):
+    @staticmethod
+    def create_details_view(video: dict):
         return ft.Column([
-            ft.Text(f'Titulo: {video.get('title')}\n', size=15, weight=ft.FontWeight.BOLD, selectable=True),
-            ft.Text(f'Descripcion: {video.get('description')}\n', size=15, weight=ft.FontWeight.BOLD, selectable=True),
-            ft.Text(f'Duracion: {video.get('time_video')} Min\n', size=15, weight=ft.FontWeight.BOLD, selectable=True),
+            ft.Text(f'Titulo: {video.get("title")}\n', size=15, weight=ft.FontWeight.BOLD, selectable=True),
+            ft.Text(f'Descripcion: {video.get("description")}\n', size=15, weight=ft.FontWeight.BOLD, selectable=True),
+            ft.Text(f'Duracion: {video.get("time_video")} Min\n', size=15, weight=ft.FontWeight.BOLD, selectable=True),
             ft.Container(alignment=ft.alignment.center,
                          content=ft.Image(src=video.get('thumbnail'), height=130, width=130))
         ], scroll=ft.ScrollMode.AUTO)
