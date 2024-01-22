@@ -1,6 +1,7 @@
 flet
 pyinstaller
 g4f
+yt-dlp
 SQLAlchemy~=2.0.23
 requests~=2.31.0
 appdirs~=1.4.4

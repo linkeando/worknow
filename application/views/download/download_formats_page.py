@@ -1,4 +1,3 @@
-import pyperclip
 import flet as ft
 
 from concurrent.futures import ThreadPoolExecutor
@@ -17,18 +16,6 @@ class DownloadFormat:
         self.video_service = Video(self.page, action_bar)
         self.video_list = self.video_service.preferences.get_preference(Constants.VIDEO_LIST) or []
         self.text_field: ft.TextField = self.create_textfield()
-
-    '''def on_element_action(self):
-        return [
-            ft.IconButton(icon=ft.icons.COPY, on_click=lambda e: pyperclip.copy('aca')),
-            ft.IconButton(icon=ft.icons.COPY, on_click=lambda e: pyperclip.copy('aca')),
-            ft.IconButton(icon=ft.icons.COPY, on_click=lambda e: pyperclip.copy('aca')),
-        ]
-
-    def on_multiple_elements_action(self):
-        return [
-            ft.IconButton(icon=ft.icons.COPY, on_click=lambda e: pyperclip.copy('aca')),
-        ]'''
 
     def _associate_gestures(self, videos: List[ft.Card]):
         with ThreadPoolExecutor() as executor:
