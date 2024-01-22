@@ -1,4 +1,6 @@
 import os
+import platform
+import subprocess
 
 import flet as ft
 
@@ -90,7 +92,14 @@ class Settings:
 
     def clean_data(self):
         folder_path = os.path.dirname(self.session_manager.get_app_data_dir())
-        os.startfile(folder_path)
+        if platform.system() == "Windows":
+            os.startfile(folder_path)
+        elif platform.system() == "Linux":
+            subprocess.run(["xdg-open", folder_path])
+        elif platform.system() == "Darwin":  # macOS
+            subprocess.run(["open", folder_path])
+        else:
+            print("Sistema operativo no compatible. No se pudo abrir la carpeta.")
 
     @staticmethod
     def questions_application():
@@ -133,7 +142,8 @@ class Settings:
             self.settings_tile(title='Subir Configuracion', subtitle='Suba la configuracion de la aplicación',
                                icon=ft.Icon(ft.icons.UPLOAD),
                                on_click=lambda e: self.upload_database()),
-            self.settings_tile(title='Ruta De Guardado De Configuracion', subtitle=path_to_download, icon=ft.Icon(ft.icons.FOLDER),
+            self.settings_tile(title='Ruta De Guardado De Configuracion', subtitle=path_to_download,
+                               icon=ft.Icon(ft.icons.FOLDER),
                                on_click=lambda e: self.define_path_to_save()),
             self.settings_tile(title='Limpiar Todos Los Datos', subtitle='Se eliminaran todos los datos',
                                icon=ft.Icon(ft.icons.CLEAR_ALL),

@@ -28,7 +28,6 @@ class LoggerDownload:
             self.page.add(self.info_row)
             self.info_row_added = True
 
-
     def update_interface(self):
         self.info_row.controls[1].value = ''
         self.progress_download.visible = False
@@ -65,4 +64,3 @@ class LoggerDownload:
             if self.info_row_added:
                 self.page.remove(self.info_row)
                 self.info_row_added = False
-
