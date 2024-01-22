@@ -1,4 +1,5 @@
 flet
+pyinstaller
 g4f
 SQLAlchemy~=2.0.23
 requests~=2.31.0
