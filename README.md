@@ -10,7 +10,7 @@ WorkNow es una aplicación de escritorio diseñada para mejorar tu productividad
 - **Multi Funcional:** Una aplicación que combina diversas funcionalidades para satisfacer tus necesidades.
 
 ## Instalación
-1. Descarga la última versión de WorkNow desde el siguiente enlace: [Descargar WorkNow](#https://app.mediafire.com/c0yqh9ft55waa).
+1. Descarga la última versión de WorkNow desde el siguiente enlace: [Descargar WorkNow](https://app.mediafire.com/c0yqh9ft55waa).
 2. Ejecuta el instalador y sigue las instrucciones en pantalla para completar la instalación.
 
 ## Requisitos del Sistema
@@ -34,6 +34,5 @@ Si tienes ideas para mejorar WorkNow o encuentras algún problema, por favor abr
 
 ## Licencia
 Este proyecto está licenciado bajo la Licencia MIT - consulta el archivo [LICENSE](LICENSE) para más detalles.
-
 
 ---
